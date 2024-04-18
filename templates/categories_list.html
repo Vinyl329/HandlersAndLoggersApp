@@ -1,0 +1,101 @@
+{% extends 'flatpages/default.html' %}
+<b style="color:#ff0099; font-size:30px"> Page "Posts"</b>
+{% load censor %}
+
+{% block title %} Posts {% endblock title %}
+
+{% block content %}
+
+<h3>
+    <a href="/news/search/">Найти публикацию &#128073; </a>
+    {% if posts|length > 1 %}
+    <br>
+    <a href="/news/one_by_one/"> Постраничный вывод статей &#128073;</a>
+    {% else %}
+    <br>
+    <a href="/news">На главную &#128073;</a>
+    {% endif %}
+    <br>
+    <a href="/news/create">Добавить пост &#128073;</a>
+</h3>
+<!--Запрос на метод сортировки-->
+
+
+<h2>На сегодняшнее число {{ time_now|date:'d M Y' }} всего новостей {{ posts_quantity }} на этой странице: {{posts|length}}.
+     </h2>
+
+<!--<h2>{{ time_now|date:'M d Y' }}</h2>-->
+<hr>
+{% if categories_posts_list %}
+<table>
+    <thead>
+    <tr align="left">
+        <th> Автор:</th>
+        <th> Заголовок:</th>
+        <th> Краткое содержание:</th>
+        <th> Дата публикации:</th>
+        <th> Категория:</th>
+        <th> Рэйтинг:</th>
+        <th> Ред-ть:</th>
+        <th> Удалить:</th>
+
+    </tr>
+    </thead>
+    {% for item in categories_posts_list %}
+    <tr>
+        <td>  <a href="{% url 'posts' item.id %}">{{ item.author }}</a> </td>
+        <td width="300">{{item.title|censor}}</td>
+        <td width="300">{{item.text|censor|truncatewords:5}}</td>
+        <td width="200">{{item.post_time}}</td>
+        <td>
+            {% for cat in item.category.all %}
+            <a href = "{% url 'categories_list' cat.id %}" > {{cat}}</a>
+            {% endfor %}
+        </td>
+        <!-- <td width="100">{{item.category}}</td> -->
+        <td width="50" align="center">{{item.rating}}</td>
+        <td align="center"> <a href="{% url 'update' item.id %}"><u>&#128260;</u></a></td>
+        <td align="center"><a href="{% url 'delete' item.id %}"><u> &#128683; </u></a></td>
+    </tr>
+    {% endfor %}
+</table>
+<p class="text-center">
+        {% if not is_subscriber %}            
+            <button><a href="{% url 'subscribe' category.id %}">Подписаться на категорию "{{category}}"</a> </button>>      
+        {% else %}
+            <h3>Вы уже подписаны на категорию "{{category}}" </h3> 
+            <h3>Статьи выбранной категории: </h3> 
+
+            {% for item in categories_posts_list %}
+                {{item}}
+                <br>
+            {% endfor %}
+            
+        {% endif %}
+</p>
+
+{% else %}
+<h2>Сегодня без новостей :(</h2>
+{% endif %}
+<br>
+{% if is_paginated %}
+
+{% if page_obj.has_previous %}
+<a href="?page=1">First</a>
+<a href="?page={{ page_obj.previous_page_number }}">&#9194;</a>
+{% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+<a>{{ num }}</a>
+{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a href="?page={{ num }}">{{ num }}</a>
+{% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}"> &#9193;</a>
+<a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+{% endif %}
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends 'flatpages/default.html' %}
+{% load censor %}
+{% load cache %} <!-- Загружаем кэширование -->
+    {% cache 30 header %} <!-- Кэшируем отдельный блок на 30 секунд -->
+        {% block header %}
+        {% endblock header %}
+    {% endcache %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+   <h1>Все новости</h1>
+   <h3>Всего новостей: {{ news| length }}</h3>
+   <h3>{{ time_now|date:'d M Y' }}</h3>
+
+   <hr>
+   {% if news %}
+       <table>
+           <tr>
+               <td>Заголовок</td>
+               <td>Дата публикации</td>
+               <td>Текст</td>
+           </tr>
+           {% for post in news %}
+           <tr>
+
+               <td>{{ post.statement }}</td>
+               <td>{{ post.date|date:'d M Y'  }}</td>
+               <td>{{ post.text|truncatewords:20|censor }}</td>
+           </tr>
+           {% endfor %}
+
+       </table>
+   {% else %}
+       <h2>Новостей пока нет :(</h2>
+   {% endif %}
+   {% if page_obj.has_previous %}
+       <a href="?page=1">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {{ page_obj.number }}
+
+   {% if page_obj.has_next %}
+       <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+
+{% endblock content %}

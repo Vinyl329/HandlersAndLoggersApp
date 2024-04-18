@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+{% load censor %}
+<!-- Название у нас будет Product -->
+{% load cache %} <!-- Загружаем кэширование -->
+    {% cache 30 header %} <!-- Кэшируем отдельный блок на 30 секунд -->
+        {% block header %}
+        {% endblock header %}
+    {% endcache %}
+{% block title %}
+Post
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+<h2>{{ post.statement }}</h2>
+<h3>{{ post.date|date:'d M Y' }}</h3>
+<i>{{ post.text|censor }}</i>
+{% endblock content %}

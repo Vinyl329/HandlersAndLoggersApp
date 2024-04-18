@@ -1,0 +1,218 @@
+18.04.2024 11-52-37 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\log.py Internal Server Error: /accounts/login/ (<class 'smtplib.SMTPServerDisconnected'>, SMTPServerDisconnected('please run connect() first'), <traceback object at 0x000002A131656B40>)
+Traceback (most recent call last):
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 168, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 95, in dispatch
+    response = super(RedirectAuthenticatedUserMixin, self).dispatch(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 123, in post
+    response = self.form_valid(form)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 181, in form_valid
+    return form.login(self.request, redirect_url=success_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\forms.py", line 210, in login
+    ret = perform_login(
+          ^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\utils.py", line 166, in perform_login
+    return _perform_login(request, login)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\utils.py", line 176, in _perform_login
+    response = adapter.pre_login(request, login.user, **hook_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\adapter.py", line 464, in pre_login
+    send_email_confirmation(request, user, signup=signup, email=email)
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\utils.py", line 399, in send_email_confirmation
+    email_address.send_confirmation(request, signup=signup)
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\models.py", line 93, in send_confirmation
+    confirmation.send(request, signup=signup)
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\models.py", line 126, in send
+    get_adapter().send_confirmation_mail(request, self, signup)
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\adapter.py", line 641, in send_confirmation_mail
+    self.send_mail(email_template, emailconfirmation.email_address.email, ctx)
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\adapter.py", line 186, in send_mail
+    msg.send()
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 92, in open
+    self.connection.starttls(context=self.ssl_context)
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 769, in starttls
+    self.ehlo_or_helo_if_needed()
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 611, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+                   ^^^^^^^^^^^
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 451, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 378, in putcmd
+    self.send(f'{s}{CRLF}')
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 365, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+18.04.2024 11-52-37 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\servers\basehttp.py "POST /accounts/login/ HTTP/1.1" 500 194911 None
+18.04.2024 11-55-36 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\log.py Internal Server Error: /news/2/delete/ (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'post_list' not found. 'post_list' is not a valid view function or pattern name."), <traceback object at 0x000002A13151C400>)
+Traceback (most recent call last):
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\edit.py", line 278, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\edit.py", line 283, in form_valid
+    success_url = self.get_success_url()
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\edit.py", line 237, in get_success_url
+    if self.success_url:
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\functional.py", line 149, in __wrapper__
+    res = func(*self.__args, **self.__kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'post_list' not found. 'post_list' is not a valid view function or pattern name.
+18.04.2024 11-55-36 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\servers\basehttp.py "POST /news/2/delete/ HTTP/1.1" 500 108233 None
+18.04.2024 11-56-25 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\log.py Internal Server Error: /accounts/signup/ (<class 'smtplib.SMTPServerDisconnected'>, SMTPServerDisconnected('please run connect() first'), <traceback object at 0x000002A130158880>)
+Traceback (most recent call last):
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\decorators.py", line 12, in wrap
+    resp = function(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 255, in dispatch
+    return super(SignupView, self).dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 95, in dispatch
+    response = super(RedirectAuthenticatedUserMixin, self).dispatch(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 227, in dispatch
+    return super(CloseableSignupMixin, self).dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 123, in post
+    response = self.form_valid(form)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\views.py", line 269, in form_valid
+    self.user, resp = form.try_save(self.request)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\forms.py", line 399, in try_save
+    adapter.send_account_already_exists_mail(email)
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\adapter.py", line 628, in send_account_already_exists_mail
+    self.send_mail("account/email/account_already_exists", email, ctx)
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\allauth\account\adapter.py", line 186, in send_mail
+    msg.send()
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 92, in open
+    self.connection.starttls(context=self.ssl_context)
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 769, in starttls
+    self.ehlo_or_helo_if_needed()
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 611, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+                   ^^^^^^^^^^^
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 451, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 378, in putcmd
+    self.send(f'{s}{CRLF}')
+  File "C:\Users\eldol\AppData\Local\Programs\Python\Python311\Lib\smtplib.py", line 365, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+18.04.2024 11-56-25 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\servers\basehttp.py "POST /accounts/signup/ HTTP/1.1" 500 179641 None
+18.04.2024 11-56-41 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\log.py Internal Server Error: /news/2/delete/ (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'post_list' not found. 'post_list' is not a valid view function or pattern name."), <traceback object at 0x000002A131685080>)
+Traceback (most recent call last):
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\edit.py", line 278, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\edit.py", line 283, in form_valid
+    success_url = self.get_success_url()
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\views\generic\edit.py", line 237, in get_success_url
+    if self.success_url:
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\utils\functional.py", line 149, in __wrapper__
+    res = func(*self.__args, **self.__kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'post_list' not found. 'post_list' is not a valid view function or pattern name.
+18.04.2024 11-56-42 ERROR C:\Users\eldol\PycharmProjects\NewsPaperProject\venv\Lib\site-packages\django\core\servers\basehttp.py "POST /news/2/delete/ HTTP/1.1" 500 108233 None
